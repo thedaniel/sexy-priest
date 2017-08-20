@@ -21,7 +21,7 @@ export default class App extends React.Component {
     this.askForPermission()
   }
 
-  async onPress () {
+  onPress () {
     if (this.state.recording) {
       this.stop()
     } else {
