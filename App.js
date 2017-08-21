@@ -55,6 +55,13 @@ export default class App extends React.Component {
     clearInterval(this._timer)
     const currentTime = new Date().getTime()
     const endTime = currentTime + this.state.duration
+    await Expo.Audio.setAudioModeAsync({
+      allowsRecordingIOS: true,
+      interruptionModeIOS: Expo.Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
+      playsInSilentModeIOS: true,
+      shouldDuckAndroid: true,
+      interruptionModeAndroid: Expo.Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
+    })
     await this._recordInstance.prepareToRecordAsync(Expo.Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY)
     this.setState({
       recording: true,
